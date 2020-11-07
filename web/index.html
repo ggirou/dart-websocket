@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script type="application/javascript">
+      var output = function(data) { document.write(data + "<br>"); };
+
+      var http = new XMLHttpRequest();
+      http.open('GET', "http://" + location.host + "/ws/url");
+      http.onreadystatechange = function(e) {
+        if (this.readyState == this.DONE) {
+          var socket = new WebSocket(http.responseText);
+          socket.onopen = function(event) {
+            output('Socket opened');
+            socket.send("Hello");
+            socket.send("World!");
+          };
+          socket.onerror = function(event) {
+            console.log(event);
+          };
+          socket.onmessage = function(event) {
+            output('Message ' + event.data);
+          }
+
+        }
+      };
+      http.send();
+    </script>    
+  </head>
+  <body>...</body>
+</html>

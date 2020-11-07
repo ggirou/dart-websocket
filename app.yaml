@@ -1,7 +1,5 @@
-version: 1
+module: websocket
 runtime: custom
 vm: true
 api_version: 1
-
-manual_scaling:
-  instances: 1
+threadsafe: true

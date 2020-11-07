@@ -1,4 +1,5 @@
 name: websocket
 description: A sample websocket application
 dependencies:
+  appengine: any
   http: any
